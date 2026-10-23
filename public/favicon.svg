@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
+
+  <!-- Isometric cube scaled to fit 32x32 -->
+  <!-- Key vertices (scaled from 56px viewBox to ~22px working area, centered):
+       offset x=5, y=4, scale=22/56 ≈ 0.393
+       TC(28,4)   → (16, 6)
+       TL(4,17)   → (6, 11)
+       TR(52,17)  → (26, 11)
+       ML(4,39)   → (6, 19)
+       MC(28,52)  → (16, 24)
+       MR(52,39)  → (26, 19)
+       CM(28,30)  → (16, 16)
+  -->
+
+  <!-- Top face -->
+  <polygon points="6,11 16,6 26,11 16,16" fill="white" opacity="1"/>
+
+  <!-- Left face -->
+  <polygon points="6,11 16,16 16,24 6,19" fill="white" opacity="0.45"/>
+
+  <!-- Right face -->
+  <polygon points="26,11 26,19 16,24 16,16" fill="white" opacity="0.7"/>
+
+  <!-- Cube edges -->
+  <polyline points="16,6 26,11 26,19 16,24 6,19 6,11 16,6" stroke="white" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <line x1="16" y1="6"  x2="16" y2="16" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="6"  y1="19" x2="16" y2="16" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="26" y1="19" x2="16" y2="16" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Stripes on top face (clipped) -->
+  <clipPath id="top">
+    <polygon points="6,11 16,6 26,11 16,16"/>
+  </clipPath>
+  <g clip-path="url(#top)">
+    <line x1="8.3"  y1="13.8" x2="18.3"  y2="8.8"  stroke="#0a0a0a" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="11.1" y1="15.2" x2="21.1"  y2="10.2" stroke="#0a0a0a" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="13.9" y1="16.0" x2="23.9"  y2="11.0" stroke="#0a0a0a" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+</svg>
