@@ -3,7 +3,7 @@ export default function TwoSided() {
     <section id="for-landowners" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section label */}
-        <p className="text-center text-xs font-medium tracking-widest uppercase text-white/30 mb-16">
+        <p className="text-center text-xs font-medium tracking-widest uppercase text-white/50 mb-16">
           Two sides. One platform.
         </p>
 

@@ -43,13 +43,13 @@ export default function FindSpaceShell() {
           <FilterSelect value={locality} onChange={setLocality} options={LOCALITIES} icon={<PinIcon />} />
           <FilterSelect value={propType} onChange={setPropType} options={PROPERTY_TYPES} icon={<BuildingIcon />} />
           <FilterSelect value={useCase} onChange={setUseCase} options={USE_CASES} icon={<TagIcon />} />
-          <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 shrink-0">
-            <span className="text-white/30">≥</span>
-            <input type="number" placeholder="Min sq yds" value={minArea} onChange={(e) => setMinArea(e.target.value)} className="w-20 bg-transparent outline-none placeholder-white/25 text-white" />
+          <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/70 shrink-0">
+            <span className="text-white/50">≥</span>
+            <input type="number" placeholder="Min sq yds" value={minArea} onChange={(e) => setMinArea(e.target.value)} className="w-20 bg-transparent outline-none placeholder-white/40 text-white" />
           </div>
-          <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 shrink-0">
-            <span className="text-white/30">₹</span>
-            <input type="number" placeholder="Max rent" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="w-24 bg-transparent outline-none placeholder-white/25 text-white" />
+          <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/70 shrink-0">
+            <span className="text-white/50">₹</span>
+            <input type="number" placeholder="Max rent" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="w-24 bg-transparent outline-none placeholder-white/40 text-white" />
           </div>
           <button
             onClick={() => setVerifiedOnly((v) => !v)}
@@ -62,7 +62,7 @@ export default function FindSpaceShell() {
           </button>
         </div>
 
-        <div className="shrink-0 text-xs text-white/30 hidden sm:block">
+        <div className="shrink-0 text-xs text-white/50 hidden sm:block">
           {filtered.length} {filtered.length === 1 ? "plot" : "plots"}
         </div>
       </header>

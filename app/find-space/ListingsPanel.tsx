@@ -23,7 +23,7 @@ export default function ListingsPanel({ listings, activeId, onHover, onRequest }
   return (
     <aside className="w-full sm:w-[360px] lg:w-[400px] shrink-0 flex flex-col border-r border-white/[0.06] overflow-hidden">
       <div className="px-4 py-3 border-b border-white/[0.06]">
-        <p className="text-xs text-white/30">
+        <p className="text-xs text-white/50">
           Showing <span className="text-white font-medium">{listings.length}</span> verified plots
         </p>
       </div>
@@ -36,8 +36,8 @@ export default function ListingsPanel({ listings, activeId, onHover, onRequest }
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
               </svg>
             </div>
-            <p className="text-white/40 text-sm">No plots match your filters</p>
-            <p className="text-white/25 text-xs">Try adjusting your search</p>
+            <p className="text-white/50 text-sm">No plots match your filters</p>
+            <p className="text-white/40 text-xs">Try adjusting your search</p>
           </div>
         ) : (
           listings.map((l) => (
@@ -86,14 +86,14 @@ const ListingCard = React.forwardRef<
                 Verified
               </span>
             )}
-            <span className="text-[10px] text-white/30 capitalize">{l.propertyType}</span>
+            <span className="text-[11px] text-white/60 capitalize">{l.propertyType}</span>
           </div>
           <h3 className="text-sm font-semibold text-white leading-snug truncate">{l.title}</h3>
-          <p className="text-xs text-white/40 mt-0.5">{l.locality}</p>
+          <p className="text-xs text-white/60 mt-0.5">{l.locality}</p>
         </div>
         <div className="text-right shrink-0">
           <p className="text-base font-bold text-white">₹{(l.rent / 1000).toFixed(0)}K</p>
-          <p className="text-[10px] text-white/30">/month</p>
+          <p className="text-[11px] text-white/50">/month</p>
         </div>
       </div>
 
@@ -138,8 +138,8 @@ ListingCard.displayName = "ListingCard";
 
 function Spec({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex items-center gap-1 text-[10px] text-white/40">
-      <span className="text-white/20">{icon}</span>
+    <div className="flex items-center gap-1 text-[11px] text-white/60">
+      <span className="text-white/40">{icon}</span>
       {label}
     </div>
   );

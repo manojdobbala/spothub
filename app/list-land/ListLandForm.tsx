@@ -207,7 +207,7 @@ export default function ListLandForm() {
         <button
           type="button"
           onClick={() => fileRef.current?.click()}
-          className="w-full h-11 px-4 rounded-xl border border-dashed border-white/15 bg-white/[0.03] text-sm text-white/40 hover:border-[#00ff87]/40 hover:text-white/60 transition-all flex items-center gap-2"
+          className="w-full h-11 px-4 rounded-xl border border-dashed border-white/15 bg-white/[0.03] text-sm text-white/60 hover:border-[#00ff87]/40 hover:text-white/80 transition-all flex items-center gap-2"
         >
           <UploadIcon />
           {form.fileName || "Choose files to upload"}
@@ -226,7 +226,7 @@ export default function ListLandForm() {
             }
           }}
         />
-        <p className="mt-1 text-xs text-white/25">JPG, PNG, PDF — up to 10 MB each</p>
+        <p className="mt-1 text-xs text-white/50">JPG, PNG, PDF — up to 10 MB each</p>
       </Field>
 
       {/* Submit */}
@@ -238,7 +238,7 @@ export default function ListLandForm() {
         Submit listing →
       </button>
 
-      <p className="text-center text-xs text-white/25">
+      <p className="text-center text-xs text-white/50">
         By submitting you agree to our listing terms. Free, no broker fees.
       </p>
     </form>
@@ -260,7 +260,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-white/40 tracking-wide">
+      <label className="text-xs font-medium text-white/60 tracking-wide">
         {label}
         {required && <span className="text-[#00ff87] ml-0.5">*</span>}
       </label>
@@ -278,7 +278,7 @@ function Input({
   return (
     <input
       {...props}
-      className={`w-full h-11 px-3.5 rounded-xl text-sm text-white placeholder-white/25 border transition-colors focus:outline-none ${
+      className={`w-full h-11 px-3.5 rounded-xl text-sm text-white placeholder-white/40 border transition-colors focus:outline-none ${
         error
           ? "border-red-500/50 bg-red-500/5 focus:border-red-400"
           : "border-white/10 bg-white/5 focus:border-[#00ff87]/50 focus:bg-white/[0.07]"

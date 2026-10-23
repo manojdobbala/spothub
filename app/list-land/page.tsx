@@ -86,7 +86,7 @@ export default function ListLandPage() {
                 "Lease closed in under 7 days",
                 "₹1.5L+ monthly earning potential",
               ].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-sm text-white/60">
+                <div key={item} className="flex items-center gap-3 text-sm text-white/70">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ff87" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <path d="M20 6 9 17l-5-5" />
                   </svg>
@@ -107,7 +107,7 @@ export default function ListLandPage() {
             <h2 className="text-2xl font-bold text-white tracking-tight">
               List your land
             </h2>
-            <p className="text-white/40 text-sm mt-1">
+            <p className="text-white/60 text-sm mt-1">
               Takes 2 minutes. Our team will verify and go live within 24 hrs.
             </p>
           </div>

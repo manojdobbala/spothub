@@ -27,7 +27,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-24 px-6 border-t border-white/[0.06]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-xs font-medium tracking-widest uppercase text-white/30 mb-4">
+          <p className="text-xs font-medium tracking-widest uppercase text-white/50 mb-4">
             How it works
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">

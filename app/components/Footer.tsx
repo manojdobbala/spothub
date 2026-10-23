@@ -6,10 +6,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Logo height={28} variant="light" />
-          <span className="text-sm text-white/30">— B2B Urban Land Marketplace</span>
+          <span className="text-sm text-white/50">— B2B Urban Land Marketplace</span>
         </div>
 
-        <div className="flex items-center gap-6 text-xs text-white/30">
+        <div className="flex items-center gap-6 text-xs text-white/50">
           <span>Hyderabad, India</span>
           <a href="mailto:hello@spothub.in" className="hover:text-white/60 transition-colors">
             hello@spothub.in

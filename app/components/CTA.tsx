@@ -17,7 +17,7 @@ export default function CTA() {
               aria-hidden="true"
             />
 
-            <p className="text-xs font-medium tracking-widest uppercase text-[#00ff87]/60 mb-4">
+            <p className="text-xs font-medium tracking-widest uppercase text-[#00ff87] mb-4">
               For Landowners
             </p>
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
@@ -51,7 +51,7 @@ export default function CTA() {
               aria-hidden="true"
             />
 
-            <p className="text-xs font-medium tracking-widest uppercase text-[#60efff]/60 mb-4">
+            <p className="text-xs font-medium tracking-widest uppercase text-[#60efff] mb-4">
               For Enterprises
             </p>
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">

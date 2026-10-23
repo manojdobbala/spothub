@@ -45,7 +45,7 @@ export default function Stats() {
           />
 
           <div className="relative text-center mb-12">
-            <p className="text-xs font-medium tracking-widest uppercase text-white/30 mb-4">
+            <p className="text-xs font-medium tracking-widest uppercase text-white/50 mb-4">
               By the numbers
             </p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
@@ -61,11 +61,11 @@ export default function Stats() {
                     {m.value}
                   </span>
                   {m.unit && (
-                    <span className="text-lg font-medium text-white/40">{m.unit}</span>
+                    <span className="text-lg font-medium text-white/60">{m.unit}</span>
                   )}
                 </div>
                 <p className="text-sm font-medium text-white mb-1">{m.label}</p>
-                <p className="text-xs text-white/35 leading-relaxed">{m.description}</p>
+                <p className="text-xs text-white/60 leading-relaxed">{m.description}</p>
               </div>
             ))}
           </div>

@@ -146,11 +146,11 @@ function DetailView({ listing: l, accent, tileBg, onClose, onRequest }: {
         <div className="flex items-start justify-between gap-3">
           <div>
             <h2 className="text-lg font-bold text-white">{l.title}</h2>
-            <p className="text-sm text-white/40 mt-0.5">{l.locality}, Hyderabad</p>
+            <p className="text-xs text-white/60 mt-0.5">{l.locality}, Hyderabad</p>
           </div>
           <div className="text-right shrink-0">
             <p className="text-2xl font-black text-white">₹{(l.rent / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-white/30">/month</p>
+            <p className="text-xs text-white/50">/month</p>
           </div>
         </div>
 
@@ -193,7 +193,7 @@ function DetailView({ listing: l, accent, tileBg, onClose, onRequest }: {
                     ? <CheckSm color={accent} size={7} />
                     : <XSm />}
                 </div>
-                <span className={`text-sm ${item.done ? "text-white/70" : "text-white/25"}`}>{item.label}</span>
+                <span className={`text-sm ${item.done ? "text-white/80" : "text-white/45"}`}>{item.label}</span>
               </div>
             ))}
           </div>
@@ -228,7 +228,7 @@ function DetailView({ listing: l, accent, tileBg, onClose, onRequest }: {
         >
           Request this space →
         </button>
-        <p className="text-center text-xs text-white/25 mt-2">No commitment · Team follows up within 24 hrs</p>
+        <p className="text-center text-xs text-white/50 mt-2">No commitment · Team follows up within 24 hrs</p>
       </div>
     </>
   );
@@ -269,7 +269,7 @@ function RequestForm({ listing: l, accent, onBack, onSuccess }: {
         </button>
         <div>
           <p className="text-sm font-semibold text-white">Request this space</p>
-          <p className="text-xs text-white/35 truncate max-w-[260px]">{l.title}</p>
+          <p className="text-xs text-white/55 truncate max-w-[260px]">{l.title}</p>
         </div>
       </div>
 
@@ -295,7 +295,7 @@ function RequestForm({ listing: l, accent, onBack, onSuccess }: {
         <FF label="Additional notes">
           <textarea value={form.notes} onChange={set("notes")} rows={3}
             placeholder="Power load, modifications, lease term…"
-            className="w-full px-3.5 py-2.5 rounded-xl text-sm text-white placeholder-white/25 border border-white/10 bg-white/5 focus:border-[#00ff87]/40 focus:outline-none resize-none" />
+            className="w-full px-3.5 py-2.5 rounded-xl text-sm text-white placeholder-white/40 border border-white/10 bg-white/5 focus:border-[#00ff87]/40 focus:outline-none resize-none" />
         </FF>
       </div>
 
@@ -305,7 +305,7 @@ function RequestForm({ listing: l, accent, onBack, onSuccess }: {
           style={{ background: `linear-gradient(135deg, ${accent}, #60efff)` }}>
           Submit request →
         </button>
-        <p className="text-center text-xs text-white/25 mt-2">We respond within 24 hours</p>
+        <p className="text-center text-xs text-white/50 mt-2">We respond within 24 hours</p>
       </div>
     </>
   );
@@ -337,7 +337,7 @@ function SuccessView({ listing: l, accent, onClose }: { listing: Listing; accent
 // ── Tiny shared components ────────────────────────────────────────────────────
 function HR() { return <div className="h-px bg-white/[0.06]" />; }
 function Label({ children }: { children: React.ReactNode }) {
-  return <p className="text-[10px] font-semibold tracking-widest uppercase text-white/30">{children}</p>;
+  return <p className="text-xs font-semibold tracking-widest uppercase text-white/50">{children}</p>;
 }
 function Tag({ label, color }: { label: string; color?: string }) {
   return (
@@ -352,7 +352,7 @@ function Tag({ label, color }: { label: string; color?: string }) {
 function SpecCard({ label, value, accent }: { icon: string; label: string; value: string; accent: string }) {
   return (
     <div className="flex flex-col gap-0.5 p-3 rounded-xl border border-white/[0.06] bg-white/[0.03]">
-      <p className="text-[10px] text-white/30">{label}</p>
+      <p className="text-xs text-white/50">{label}</p>
       <p className="text-sm font-semibold" style={{ color: accent }}>{value}</p>
     </div>
   );
@@ -360,14 +360,14 @@ function SpecCard({ label, value, accent }: { icon: string; label: string; value
 function FF({ label, error, required, children }: { label: string; error?: string; required?: boolean; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-white/40">{label}{required && <span className="text-[#00ff87] ml-0.5">*</span>}</label>
+      <label className="text-xs font-medium text-white/60">{label}{required && <span className="text-[#00ff87] ml-0.5">*</span>}</label>
       {children}
       {error && <span className="text-xs text-red-400">{error}</span>}
     </div>
   );
 }
 function FI({ error, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { error?: boolean }) {
-  return <input {...props} className={`w-full h-10 px-3.5 rounded-xl text-sm text-white placeholder-white/25 border focus:outline-none transition-colors ${error ? "border-red-500/40 bg-red-500/5" : "border-white/10 bg-white/5 focus:border-[#00ff87]/40"}`} />;
+  return <input {...props} className={`w-full h-10 px-3.5 rounded-xl text-sm text-white placeholder-white/40 border focus:outline-none transition-colors ${error ? "border-red-500/40 bg-red-500/5" : "border-white/10 bg-white/5 focus:border-[#00ff87]/40"}`} />;
 }
 function FS_({ options, placeholder, error, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options: string[]; placeholder: string; error?: boolean }) {
   return (

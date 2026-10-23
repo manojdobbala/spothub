@@ -26,7 +26,7 @@ export default function Hero() {
       </h1>
 
       {/* Sub */}
-      <p className="fade-in-up fade-in-up-delay-3 mt-6 max-w-xl text-lg text-white/50 leading-relaxed">
+      <p className="fade-in-up fade-in-up-delay-3 mt-6 max-w-xl text-lg text-white/60 leading-relaxed">
         Spothub connects vacant plot owners with quick-commerce brands and cloud
         kitchen operators — verified, fast, and friction-free.
       </p>
