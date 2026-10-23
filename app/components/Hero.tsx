@@ -35,7 +35,7 @@ export default function Hero() {
       <div className="fade-in-up fade-in-up-delay-4 mt-10 flex flex-col sm:flex-row items-center gap-4">
         <a
           id="list-land"
-          href="#for-landowners"
+          href="/list-land"
           className="group flex items-center gap-2 h-12 px-6 rounded-full border border-white/15 bg-white/5 text-sm font-medium text-white hover:bg-white/10 hover:border-white/25 transition-all"
         >
           <LandIcon />
@@ -43,7 +43,7 @@ export default function Hero() {
         </a>
         <a
           id="find-space"
-          href="#for-enterprises"
+          href="/find-space"
           className="group flex items-center gap-2 h-12 px-6 rounded-full text-sm font-medium text-[#0a0a0a] transition-opacity hover:opacity-90"
           style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
         >

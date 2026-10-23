@@ -51,7 +51,7 @@ export default function Nav() {
             List your land
           </a>
           <a
-            href="#find-space"
+            href="/find-space"
             className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-sm font-medium text-[#0a0a0a] transition-opacity hover:opacity-90"
             style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
           >

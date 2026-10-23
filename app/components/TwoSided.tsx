@@ -51,7 +51,7 @@ export default function TwoSided() {
             </ul>
 
             <a
-              href="#"
+              href="/list-land"
               className="inline-flex items-center gap-2 h-10 px-5 rounded-full text-sm font-medium text-[#0a0a0a] transition-opacity hover:opacity-90"
               style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
             >
@@ -101,7 +101,7 @@ export default function TwoSided() {
             </ul>
 
             <a
-              href="#"
+              href="/find-space"
               className="inline-flex items-center gap-2 h-10 px-5 rounded-full text-sm font-medium text-[#0a0a0a] transition-opacity hover:opacity-90"
               style={{ background: "linear-gradient(135deg, #60efff, #a78bfa)" }}
             >

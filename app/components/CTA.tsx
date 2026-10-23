@@ -29,7 +29,7 @@ export default function CTA() {
               handle the paperwork.
             </p>
             <a
-              href="#"
+              href="/list-land"
               className="inline-flex items-center gap-2 h-11 px-6 rounded-full text-sm font-semibold text-[#0a0a0a] transition-opacity hover:opacity-90"
               style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
             >
@@ -63,7 +63,7 @@ export default function CTA() {
               delivery radius — no brokers needed.
             </p>
             <a
-              href="#"
+              href="/find-space"
               className="inline-flex items-center gap-2 h-11 px-6 rounded-full text-sm font-semibold text-[#0a0a0a] transition-opacity hover:opacity-90"
               style={{ background: "linear-gradient(135deg, #60efff, #a78bfa)" }}
             >
