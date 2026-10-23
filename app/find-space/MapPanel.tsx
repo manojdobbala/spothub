@@ -50,15 +50,23 @@ export default function MapPanel({ listings, activeId, onSelect }: Props) {
         attributionControl: true,
       });
 
-      // Stadia Alidade Smooth Dark tiles — no API key needed
-      L.tileLayer(
-        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+      // OpenStreetMap tiles — free, no API key, works on any domain
+      const tileLayer = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
           attribution:
-            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          maxZoom: 20,
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          subdomains: "abc",
+          maxZoom: 19,
         }
       ).addTo(map);
+
+      // Darken the base tiles without affecting markers
+      const tilePane = map.getPane("tilePane");
+      if (tilePane) {
+        tilePane.style.filter =
+          "invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.6)";
+      }
 
       L.control.zoom({ position: "topright" }).addTo(map);
 
