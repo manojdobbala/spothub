@@ -1,15 +1,17 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import React from "react";
 import type { Listing } from "./listings";
 
 interface Props {
   listings: Listing[];
   activeId: number | null;
   onHover: (id: number | null) => void;
+  onRequest: (listing: Listing) => void;
 }
 
-export default function ListingsPanel({ listings, activeId, onHover }: Props) {
+export default function ListingsPanel({ listings, activeId, onHover, onRequest }: Props) {
   const activeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -20,14 +22,12 @@ export default function ListingsPanel({ listings, activeId, onHover }: Props) {
 
   return (
     <aside className="w-full sm:w-[360px] lg:w-[400px] shrink-0 flex flex-col border-r border-white/[0.06] overflow-hidden">
-      {/* Panel header */}
       <div className="px-4 py-3 border-b border-white/[0.06]">
         <p className="text-xs text-white/30">
           Showing <span className="text-white font-medium">{listings.length}</span> verified plots
         </p>
       </div>
 
-      {/* Cards */}
       <div className="flex-1 overflow-y-auto space-y-2 p-3">
         {listings.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-center py-16">
@@ -47,6 +47,7 @@ export default function ListingsPanel({ listings, activeId, onHover }: Props) {
               active={activeId === l.id}
               ref={activeId === l.id ? activeRef : null}
               onHover={onHover}
+              onRequest={onRequest}
             />
           ))
         )}
@@ -55,18 +56,21 @@ export default function ListingsPanel({ listings, activeId, onHover }: Props) {
   );
 }
 
-import React from "react";
-
 const ListingCard = React.forwardRef<
   HTMLDivElement,
-  { listing: Listing; active: boolean; onHover: (id: number | null) => void }
->(({ listing: l, active, onHover }, ref) => {
+  {
+    listing: Listing;
+    active: boolean;
+    onHover: (id: number | null) => void;
+    onRequest: (listing: Listing) => void;
+  }
+>(({ listing: l, active, onHover, onRequest }, ref) => {
   return (
     <div
       ref={ref}
       onMouseEnter={() => onHover(l.id)}
       onMouseLeave={() => onHover(null)}
-      className="group relative rounded-xl border p-4 cursor-pointer transition-all"
+      className="group relative rounded-xl border p-4 transition-all"
       style={{
         background: active ? "rgba(0,255,135,0.04)" : "rgba(255,255,255,0.02)",
         borderColor: active ? "rgba(0,255,135,0.25)" : "rgba(255,255,255,0.07)",
@@ -87,11 +91,8 @@ const ListingCard = React.forwardRef<
           <h3 className="text-sm font-semibold text-white leading-snug truncate">{l.title}</h3>
           <p className="text-xs text-white/40 mt-0.5">{l.locality}</p>
         </div>
-        {/* Rent */}
         <div className="text-right shrink-0">
-          <p className="text-base font-bold text-white">
-            ₹{(l.rent / 1000).toFixed(0)}K
-          </p>
+          <p className="text-base font-bold text-white">₹{(l.rent / 1000).toFixed(0)}K</p>
           <p className="text-[10px] text-white/30">/month</p>
         </div>
       </div>
@@ -105,7 +106,7 @@ const ListingCard = React.forwardRef<
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap gap-1.5 mb-3">
         {l.tags.map((t) => (
           <span
             key={t}
@@ -121,15 +122,14 @@ const ListingCard = React.forwardRef<
         ))}
       </div>
 
-      {/* CTA — shown on hover */}
-      <div className={`mt-3 transition-all overflow-hidden ${active ? "max-h-12 opacity-100" : "max-h-0 opacity-0"}`}>
-        <button
-          className="w-full h-8 rounded-lg text-xs font-semibold text-[#0a0a0a] transition-opacity hover:opacity-90"
-          style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
-        >
-          Request this space →
-        </button>
-      </div>
+      {/* CTA — always visible, no hover dependency */}
+      <button
+        onClick={() => onRequest(l)}
+        className="w-full h-8 rounded-lg text-xs font-semibold text-[#0a0a0a] transition-opacity hover:opacity-90 active:opacity-75"
+        style={{ background: "linear-gradient(135deg, #00ff87, #60efff)" }}
+      >
+        Request this space →
+      </button>
     </div>
   );
 });

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "../components/Logo";
 import ListingsPanel from "./ListingsPanel";
 import MapPanel from "./MapPanel";
+import SpaceDrawer from "./SpaceDrawer";
 import { listings, LOCALITIES, PROPERTY_TYPES, USE_CASES, type Listing } from "./listings";
 
 export default function FindSpaceShell() {
@@ -15,6 +16,7 @@ export default function FindSpaceShell() {
   const [maxRent, setMaxRent] = useState("");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [drawerListing, setDrawerListing] = useState<Listing | null>(null);
 
   const filtered = useMemo<Listing[]>(() => {
     return listings.filter((l) => {
@@ -33,63 +35,26 @@ export default function FindSpaceShell() {
     <div className="flex flex-col h-screen bg-[#0a0a0a] overflow-hidden">
       {/* ── Top bar ── */}
       <header className="shrink-0 h-14 flex items-center px-4 gap-4 border-b border-white/[0.06] bg-[#0a0a0a] z-30">
-        {/* Logo */}
         <Link href="/" className="shrink-0 mr-2">
           <Logo height={28} variant="light" />
         </Link>
 
-        {/* Filters row */}
         <div className="flex items-center gap-2 flex-1 overflow-x-auto scrollbar-hide">
-          {/* Locality */}
-          <FilterSelect
-            value={locality}
-            onChange={setLocality}
-            options={LOCALITIES}
-            icon={<PinIcon />}
-          />
-          {/* Property type */}
-          <FilterSelect
-            value={propType}
-            onChange={setPropType}
-            options={PROPERTY_TYPES}
-            icon={<BuildingIcon />}
-          />
-          {/* Use case */}
-          <FilterSelect
-            value={useCase}
-            onChange={setUseCase}
-            options={USE_CASES}
-            icon={<TagIcon />}
-          />
-          {/* Min area */}
+          <FilterSelect value={locality} onChange={setLocality} options={LOCALITIES} icon={<PinIcon />} />
+          <FilterSelect value={propType} onChange={setPropType} options={PROPERTY_TYPES} icon={<BuildingIcon />} />
+          <FilterSelect value={useCase} onChange={setUseCase} options={USE_CASES} icon={<TagIcon />} />
           <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 shrink-0">
             <span className="text-white/30">≥</span>
-            <input
-              type="number"
-              placeholder="Min sq yds"
-              value={minArea}
-              onChange={(e) => setMinArea(e.target.value)}
-              className="w-20 bg-transparent outline-none placeholder-white/25 text-white"
-            />
+            <input type="number" placeholder="Min sq yds" value={minArea} onChange={(e) => setMinArea(e.target.value)} className="w-20 bg-transparent outline-none placeholder-white/25 text-white" />
           </div>
-          {/* Max rent */}
           <div className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 shrink-0">
             <span className="text-white/30">₹</span>
-            <input
-              type="number"
-              placeholder="Max rent"
-              value={maxRent}
-              onChange={(e) => setMaxRent(e.target.value)}
-              className="w-24 bg-transparent outline-none placeholder-white/25 text-white"
-            />
+            <input type="number" placeholder="Max rent" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="w-24 bg-transparent outline-none placeholder-white/25 text-white" />
           </div>
-          {/* Verified toggle */}
           <button
             onClick={() => setVerifiedOnly((v) => !v)}
             className={`flex items-center gap-1.5 h-8 px-3 rounded-lg border text-xs font-medium transition-colors shrink-0 ${
-              verifiedOnly
-                ? "border-[#00ff87]/40 bg-[#00ff87]/10 text-[#00ff87]"
-                : "border-white/10 bg-white/5 text-white/50 hover:text-white"
+              verifiedOnly ? "border-[#00ff87]/40 bg-[#00ff87]/10 text-[#00ff87]" : "border-white/10 bg-white/5 text-white/50 hover:text-white"
             }`}
           >
             <ShieldIcon active={verifiedOnly} />
@@ -97,23 +62,32 @@ export default function FindSpaceShell() {
           </button>
         </div>
 
-        {/* Result count */}
         <div className="shrink-0 text-xs text-white/30 hidden sm:block">
           {filtered.length} {filtered.length === 1 ? "plot" : "plots"}
         </div>
       </header>
 
       {/* ── Body: listings + map ── */}
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-1 min-h-0 relative">
         <ListingsPanel
           listings={filtered}
           activeId={activeId}
           onHover={setActiveId}
+          onRequest={(listing) => setDrawerListing(listing)}
         />
-        <MapPanel
-          listings={filtered}
-          activeId={activeId}
-          onSelect={setActiveId}
+
+        <div className="relative flex-1 min-w-0">
+          <MapPanel
+            listings={filtered}
+            activeId={activeId}
+            onSelect={setActiveId}
+          />
+        </div>
+
+        {/* Drawer sits at the body level, overlaying only the map column */}
+        <SpaceDrawer
+          listing={drawerListing}
+          onClose={() => setDrawerListing(null)}
         />
       </div>
     </div>
